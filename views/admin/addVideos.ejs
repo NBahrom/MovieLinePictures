@@ -1,0 +1,118 @@
+<%- include('includes/header.ejs') %>
+
+    <%- include('includes/sidebar.ejs') %>
+    
+    <main class="content-wrapper" style="min-height: 969px;">
+
+        <div class="content-header">
+            <div class="card bg-gradient-success mb-0 rounded-0 collapsed-card">
+                <div class="card-header border-0 ui-sortable-handle" style="cursor: move;">
+                    <h3 class="card-title">
+                        <i class="fa fa-question" aria-hidden="true"></i>
+                        Как взять iframe с ютуба 
+                    </h3>
+                    
+                    <div class="card-tools">
+            
+                        <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
+                            <i class="fas fa-plus"></i>
+                        </button>                           
+                    </div>
+                
+                </div>
+                
+                    <div class="card-body pt-0" style="display: none;">
+                    <p>Как встроить видео  на сторонний ресурс</p>
+                     <ol>
+                        <li>
+                            <p>Перейдите на сайт youtube.com на компьютере и откройте ролик или плейлист, который вы хотите встроить.</p>
+                        </li>
+                        <li>
+                            <p>Нажмите Поделиться .</p>
+                        </li>
+                        <li>
+                            <p>Выберите Встроить.</p>
+                        </li>
+                        <li>
+                            <p>Скопируйте код.</p>
+                        </li>
+                        <li>
+                            <p>Вставьте код ниже.</p>
+                        </li>
+                     </ol>
+                     
+                    </div>
+            </div>
+        </div>
+
+
+        <div class="content">
+            <div class="">
+                <div class="">
+                    <form <% if(video != null){ %>action="/admin/<%= video.dataValues.id %>/editVideos"<% }else{ %> action="/admin/addVideos"<% } %>  method="post">
+                        <input name="_csrf" value="<%= csrfToken %>" type="hidden" >
+                        <div class="form-group">
+                            <label for="videoIframe">iframe код видео с ютуба</label>
+                            <input required="" type="text" name="videoIframe" class="form-control" id="videoIframe" placeholder="Iframe" 
+                            <% if(video != null){ %> value="<%= video.dataValues.videoUrl %>" <% }else{ %> value="" <% } %>>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="videoNameRu">Название (Title) RU</label>
+                            <input required="" type="text" name="videoNameRu" class="form-control" id="videoNameRu" placeholder="Название"
+                            <% if(video != null){ %> value="<%= video.dataValues.titleRu %>" <% }else{ %> value="" <% } %>>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="videoNameEn">Название (Title) EN</label>
+                            <input required="" type="text" name="videoNameEn" class="form-control" id="videoNameEn" placeholder="Название"
+                            <% if(video != null){ %> value="<%= video.dataValues.titleEn %>" <% }else{ %> value="" <% } %>>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="videoNameUz">Название (Title) UZ</label>
+                            <input required="" type="text" name="videoNameUz" class="form-control" id="videoNameUz" placeholder="Название"
+                            <% if(video != null){ %> value="<%= video.dataValues.titleUz %>" <% }else{ %> value="" <% } %>>
+                        </div>
+            
+            
+                        <div class="form-group">
+                            <label for="videoSubTitleRu">Подзаголовок (subtitle) RU</label>
+                            <input required="" type="text" name="videoSubTitleRu" class="form-control" id="videoSubTitleRu" placeholder="Подзаголовок" 
+                            <% if(video != null){ %> value="<%= video.dataValues.subTitleRu %>" <% }else{ %> value="" <% } %>>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="videoSubTitleEn">Подзаголовок (subtitle) EN</label>
+                            <input required="" type="text" name="videoSubTitleEn" class="form-control" id="videoSubTitleEn" placeholder="Подзаголовок" 
+                            <% if(video != null){ %> value="<%= video.dataValues.subTitleEn %>" <% }else{ %> value="" <% } %>>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="videoSubTitleUz">Подзаголовок (subtitle) UZ</label>
+                            <input required="" type="text" name="videoSubTitleUz" class="form-control" id="videoSubTitleUZ" placeholder="Подзаголовок" 
+                            <% if(video != null){ %> value="<%= video.dataValues.subTitleUz %>" <% }else{ %> value="" <% } %>>
+                        </div>
+
+        
+                        <button type="submit" class="btn btn-primary">
+                            <% if(video != null){ %>Изменить<% }else{ %> Создать<% } %>
+                                
+                            
+                            
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            
+
+            
+        </div>
+        
+
+
+    </main>
+
+
+    <%- include('includes/footer.ejs') %>    

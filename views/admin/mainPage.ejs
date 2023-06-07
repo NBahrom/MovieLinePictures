@@ -1,0 +1,55 @@
+<%- include('includes/header.ejs') %>
+
+    <%- include('includes/sidebar.ejs') %>
+    
+        <main class="content-wrapper">
+            <div class="card-header">
+                <h3 class="card-title"></h3>
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <a href="/admin/addVideos" style="width: max-content;" type="button" class="btn btn-block btn-primary">Создать</a>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-hover text-nowrap">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Название видео</th>
+                    <th>Подзаголовок</th>
+                    <th>Дата создания</th>
+                    <th>Действие</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% videos.forEach(item => {  %>
+                        <tr>
+                            <td><%= item.dataValues.id %></td>
+                            <td> <%= item.dataValues.titleRu %>  </td>
+                            <td><%= item.dataValues.subTitleRu %></td>    
+                            <td><%= item.dataValues.createdAt %></td>
+                            <td>
+                                <div class="d-flex justify-content-around">
+                                <a style="width: max-content" href="/admin/<%= item.dataValues.id %>/editVideos" class="btn btn-block btn-success"> <i class="fas fa-pen"></i> </a>
+                                    <form action="/admin/videoDelete/<%= item.dataValues.id %>" method="post">
+                                        <input name="_csrf" value="<%= csrfToken %>" type="hidden" >
+                                        <input type="hidden" name="delete" value="<%= item.dataValues.id %>">
+                                        <button type="submit" style="width: max-content;" class="btn btn-block btn-danger"><i class="fas fa-trash"></i></button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    <% }) %>                           
+               
+                    
+
+              </tbody>
+            </table>
+
+
+        </main>
+
+
+        <%- include('includes/footer.ejs') %>

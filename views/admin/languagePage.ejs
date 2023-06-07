@@ -1,0 +1,125 @@
+<%- include('includes/header.ejs') %>
+
+    <%- include('includes/sidebar.ejs') %>
+
+    <main class="content-wrapper">
+        <table class="table table-hover text-nowrap">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th style="max-width: 400px; width: 100%;">Текст</th>
+                <th>Дата создания</th>
+                <th>Действие</th>
+            </tr>
+            </thead>
+            <tbody>
+                <% language.forEach((item, index) => {  %>
+                    <% if(index == 0){ %>
+                        <tr>
+                            <td></td>
+                            <td><h5>Модальное окно (заголовка)</h5></td>     
+                        </tr>
+                        
+                    <% } %>
+                    <tr>
+                        <td><%= item.dataValues.id %></td>
+                        <td> <input required="" type="text" name="text" class="form-control name_input" value="<%= item.dataValues.text %>">  </td>    
+                        <td><%= item.dataValues.createdAt %></td>
+                        <td>
+                            <div class="d-flex justify-content-around">
+                                <form action="<%= path %>" method="post">
+                                    <input name="_csrf" value="<%= csrfToken %>" type="hidden" >
+                                    <input type="hidden" name="id" value="<%= item.dataValues.id %>">
+                                    <input type="hidden" name="text" class="hiden_name">
+                                    <button type="submit" onclick="takeInputValue(this)" style="width: max-content;" class="btn btn-block btn-success">Сохранить</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <% if(index == 3){ %>
+                        <tr>
+                            <td></td>
+                            <td><h5>Первый раздел</h5></td>     
+                        </tr>
+                        
+                    <% } %>
+                    <% if(index == 6){ %>
+                        <tr>
+                            <td></td>
+                            <td><h5>Второй раздел</h5></td>     
+                        </tr>
+                        
+                    <% } %>
+                    <% if(index == 9){ %>
+                        <tr>
+                            <td></td>
+                            <td><h5>Модальное окно (заявки)</h5></td>     
+                        </tr>
+                        
+                    <% } %>
+                    <% if(index == 14){ %>
+                        <tr>
+                            <td></td>
+                            <td><h5>Раздел решение </h5></td>     
+                        </tr>
+                        
+                    <% } %>
+                    <% if(index == 23){ %>
+                        <tr>
+                            <td></td>
+                            <td><h5>Раздел предложений </h5></td>     
+                        </tr>
+                        
+                    <% } %>
+                    <% if(index == 28){ %>
+                        <tr>
+                            <td></td>
+                            <td><h5>Раздел проблема при заказе видео </h5></td>     
+                        </tr>
+                        
+                    <% } %>
+                    <% if(index == 33){ %>
+                        <tr>
+                            <td></td>
+                            <td><h5>Раздел персонал</h5></td>     
+                        </tr>
+                        
+                    <% } %>
+                    <% if(index == 45){ %>
+                        <tr>
+                            <td></td>
+                            <td><h5>Раздел процесс</h5></td>     
+                        </tr>
+                        
+                    <% } %>
+                    <% if(index == 60){ %>
+                        <tr>
+                            <td></td>
+                            <td><h5>Раздел портфолио</h5></td>     
+                        </tr>
+                        
+                    <% } %>
+                    <% if(index == 61){ %>
+                        <tr>
+                            <td></td>
+                            <td><h5>Раздел последний экран</h5></td>     
+                        </tr>
+                        
+                    <% } %>
+                    <% if(index == 70){ %>
+                        <tr>
+                            <td></td>
+                            <td><h5>Остальные</h5></td>     
+                        </tr>
+                        
+                    <% } %>
+                <% }) %>                           
+           
+                
+
+          </tbody>
+        </table>
+    </main>
+
+    <%- include('includes/footer.ejs') %>    
